@@ -1,0 +1,19 @@
+node_modules/
+artifacts/
+cache/
+coverage/
+coverage.json
+typechain-types/
+
+# Env
+.env
+.env.*.local
+
+# OS / IDE
+.DS_Store
+*.log
+.idea/
+.vscode/
+
+# Build
+dist/
