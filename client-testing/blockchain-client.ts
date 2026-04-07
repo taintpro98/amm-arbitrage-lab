@@ -249,7 +249,14 @@ export class BlockchainClient {
     return { hash: receipt!.hash };
   }
 
-  /** `MinimalPair.mint` (requires prior `approve` on both tokens). */
+  /**
+   * `MinimalPair.mint` — pull tokens from the signer and mint LP shares (requires `approve` on both tokens).
+   *
+   * @param amount0Desired — max amount of **token0** to transfer in (wei / smallest units).
+   * @param amount1Desired — max amount of **token1** to transfer in.
+   * @param amount0Min — revert if the **actual** token0 added (after ratio clamp) is below this (slippage guard).
+   * @param amount1Min — same for token1. Use `0` on local dev; production UIs compute mins from expected ratio.
+   */
   async mint(
     amount0Desired: bigint,
     amount1Desired: bigint,
