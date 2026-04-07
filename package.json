@@ -14,7 +14,8 @@
     "deploy:sepolia": "hardhat run scripts/deploy/deployAll.ts --network sepolia",
     "deploy:mainnet": "hardhat run scripts/deploy/deployAll.ts --network mainnet",
     "verify:sepolia": "hardhat verify --network sepolia",
-    "lint:sol": "solhint 'contracts/**/*.sol'"
+    "lint:sol": "solhint 'contracts/**/*.sol'",
+    "client:demo": "ts-node client-testing/main.ts"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.8",

@@ -43,12 +43,13 @@ describe("MinimalPair", () => {
     const kBefore = r0Before * r1Before;
 
     const amountIn = ethers.parseEther("10");
-    await token0.connect(deployer).transfer(alice.address, amountIn);
-    await token0.connect(alice).approve(await pair.getAddress(), amountIn);
+    await token0.connect(deployer).getFunction("transfer")(alice.address, amountIn);
+    await token0.connect(alice).getFunction("approve")(await pair.getAddress(), amountIn);
 
     const expectedOut = await pair.getAmountOut(await token0.getAddress(), amountIn);
-    await expect(pair.connect(alice).swap(await token0.getAddress(), amountIn, 0, alice.address))
-      .to.emit(pair, "Swap");
+    await expect(
+      pair.connect(alice).getFunction("swap")(await token0.getAddress(), amountIn, 0, alice.address),
+    ).to.emit(pair, "Swap");
 
     const [r0After, r1After] = await pair.getReserves();
     const kAfter = r0After * r1After;

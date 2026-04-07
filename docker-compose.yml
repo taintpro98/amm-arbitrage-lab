@@ -10,6 +10,8 @@ services:
   anvil:
     image: ghcr.io/foundry-rs/foundry:latest
     command: ["anvil", "--host", "0.0.0.0", "--chain-id", "31337"]
+    environment:
+      ANVIL_IP_ADDR: "0.0.0.0"
     ports:
       - "8545:8545"
     healthcheck:

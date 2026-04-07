@@ -1,3 +1,4 @@
+import type { Contract } from "ethers";
 import { ethers } from "hardhat";
 
 export async function deployMockPairFixture() {
@@ -15,8 +16,8 @@ export async function deployMockPairFixture() {
   await pair.waitForDeployment();
 
   const token0Addr = await pair.token0();
-  const token0 = token0Addr === (await tokenA.getAddress()) ? tokenA : tokenB;
-  const token1 = token0Addr === (await tokenA.getAddress()) ? tokenB : tokenA;
+  const token0 = (token0Addr === (await tokenA.getAddress()) ? tokenA : tokenB) as Contract;
+  const token1 = (token0Addr === (await tokenA.getAddress()) ? tokenB : tokenA) as Contract;
 
-  return { deployer, alice, tokenA, tokenB, token0, token1, pair };
+  return { deployer, alice, tokenA, tokenB, token0, token1, pair: pair as Contract };
 }

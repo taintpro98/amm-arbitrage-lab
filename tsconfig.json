@@ -11,5 +11,5 @@
     "declaration": true,
     "declarationMap": true
   },
-  "include": ["./hardhat.config.ts", "./scripts/**/*", "./test/**/*"]
+  "include": ["./hardhat.config.ts", "./scripts/**/*", "./test/**/*", "./client-testing/**/*"]
 }
